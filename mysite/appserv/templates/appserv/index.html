@@ -1,0 +1,9 @@
+{% if appserv_list %}
+    <ul>
+    {% for appserv in appserv_list %}
+        <li><a href="/appserv/{{ appserv.id }}/">{{ appserv.appserv_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No appservs are available.</p>
+{% endif %}
