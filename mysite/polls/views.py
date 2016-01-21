@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
 
 from .models import Question, Choice
 
@@ -34,6 +36,21 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+
+class QuestionCreate(CreateView):
+    model = Question
+    fields = ['question_text']
+    success_url = '/polls/'
+
+
+class QuestionUpdate(UpdateView):
+    model = Question
+    fields = ['question_text']
+
+
+class QuestionDelete(DeleteView):
+    model = Question
+    success_url = reverse_lazy('question-list')
 
 # def index(request):
 #     latest_question_list = Question.objects.order_by('-pub_date')[:5]
