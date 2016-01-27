@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'alloc/style.css' %}" />
+
+{% if app_list %}
+	<table class="pure-table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>App</th>
+				<th>Dept</th>
+				<th>Support Model</th>
+				<th>Primary contact</th>
+				<th>Secondary contact</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			{% for app in app_list %}
+				<tr>
+					<td>{{ app.id }}</td>
+					<td>{{ app.app_name }}</td>
+					<td>{{ app.app_dept }}</td>
+					<td>{{ app.app_sla }}</td>
+					<td>{{ app.app_primary }}</td>
+					<td>{{ app.app_secondary }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+    <p>No apps are found.</p>
+{% endif %}
